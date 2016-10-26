@@ -72,11 +72,26 @@ describe("Stopwatch functionality",function(){
 
   it ("renderTimer() displays time as a string of digits separated by colons", function () {
     var dayInMilliseconds =  24   *   60    *   60    *   1000;
-   var startTime = new Date().getTime() - (dayInMilliseconds - 1000) ;
-   watch.resetTimer(); // reset before restart
+   var startTime = dayInMilliseconds - 1000 ;
+  //    var startTime = new Date().getTime() - (dayInMilliseconds - 1000) ;
+//   watch.resetTimer(); // reset before restart
    watch.startTimer(startTime); // init the start time
    expect(watch.renderTimer(startTime)).toBe('23:59:59:00');
   });
 
+  // display leading zeros for hours/seconds/minutes less than 10
+  it( "renderTimer() display leading zeros", function() {
+      // simulate timer at 09:08:07:06 to exercise leading zeros
+      var h = 60 * 60 * 1000 * 9; // 9 hours in milliseconds
+      var m = 60 * 1000 * 8;      // 8 minutes
+      var s = 1000 * 7;           // 7 seconds
+      var leadingZeroStartTime = h + m + s + 6;
+      // start the timer yesterday! :-o
+    //  var startTime = new Date().getTime() - leadingZeroStartTime
+      var startTime = leadingZeroStartTime;
+      watch.startTimer(startTime);
+      // equal( T.startTimer(startTime), startTime);
+      expect( watch.renderTimer(startTime)).toBe('09:08:07:00');
+  });
 });
 });

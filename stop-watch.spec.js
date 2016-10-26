@@ -16,7 +16,7 @@ it("reset button",function(){
 expect(document.getElementById("reset")).toBeDefined();
 });
 });*/
-describe("Stopwatch functionality",function(){
+/*describe("Stopwatch functionality",function(){
 
   it("start counting time", function(){
     expect(watch).toBeDefined();
@@ -93,5 +93,5 @@ describe("Stopwatch functionality",function(){
       // equal( T.startTimer(startTime), startTime);
       expect( watch.renderTimer(startTime)).toBe('09:08:07:00');
   });
-});
+});*/
 });

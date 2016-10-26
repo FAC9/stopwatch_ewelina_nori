@@ -1,30 +1,28 @@
   'use strict';
-function StopWatch () {
+var StopWatch = function() {
   this.timeElapsed = 0;
   this.startTime = 0;
-  console.log(this.start);
+  this.interval = 0;
 };
 
-StopWatch.prototype.startTimer = function(startTime){
-    this.startTime = startTime; // argument externally supplied
-    console.log("startTime: "+this.startTime);
-    return this.startTime;
-};
-
-StopWatch.prototype.stopTimer = function (endTime) {
-  this.timeElapsed += (endTime - this.startTime);
+StopWatch.prototype.stopTimer = function () {
+  this.timeElapsed += (new Date().getTime() - this.startTime);
+  clearInterval(this.interval);
   return this.timeElapsed;
 };
 
 StopWatch.prototype.resetTimer = function () {
   this.timeElapsed = 0;
   this.startTime = 0;
+  console.log("reset",this.timeElapsed,this.startTime);
   document.getElementsByTagName('time')[0].innerHTML = "00:00:00:00";
   return this.timeElapsed;
 }
 
 StopWatch.prototype.renderTimer = function(){
 	var hours=0,minutes=0,seconds=0 ,milliseconds = 0,res;
+  //console.log("IS anybody home?",this);
+
   var elapsed = new Date().getTime() - this.startTime;
 		//1ms
 	milliseconds= Math.floor((elapsed%1000)/10);
@@ -55,8 +53,20 @@ StopWatch.prototype.renderTimer = function(){
 		hours= '00';
 	}
 	res = hours + ':'+minutes+':'+seconds+':'+milliseconds;
-	console.log(hours,minutes,seconds,milliseconds);
-	console.log(res);
+	//console.log(hours,minutes,seconds,milliseconds);
+//	console.log(res);
   document.getElementsByClassName("timer")[0].innerHTML = res;
 	return res;
 }
+StopWatch.prototype.startTimer = function(){
+    //console.log("Am I herenow?",this);
+    this.startTime = ( this.startTime ? this.startTime : new Date().getTime()); // argument externally supplied
+    console.log("startTime: "+this.startTime);
+    console.log("Buu",this);
+    var test=this;
+    this.interval = setInterval(function(){
+        test.renderTimer();
+        //console.log("HAHO");
+      },50);
+    return this.startTime;
+};

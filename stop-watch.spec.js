@@ -1,4 +1,7 @@
 describe("Stopwatch",function(){
+
+var watch = new StopWatch();
+
   /*describe("StopWatch HTML elements",function(){
     it("time display",function(){
       expect(document.getElementsByTagName("time")[0]).toBeDefined();
@@ -15,8 +18,11 @@ describe("Stopwatch",function(){
   });*/
   describe("Stopwatch functionality",function(){
     it("start counting time", function(){
-      var watch = new StopWatch();
       expect(watch).toBeDefined();
+    });
+
+    it("StopWatch should be zero before we start the Timer", function(){
+      expect(watch.timeElapsed).toBe(0);
     });
   });
 });

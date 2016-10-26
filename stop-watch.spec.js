@@ -28,5 +28,10 @@ var watch = new StopWatch();
       expect(watch.startTime).toBe(0);
     });
 
+    it( "startTimer() starts counting from *NOW* (when instructed)", function() {
+      var startTime = new Date().getTime();
+      expect( watch.startTimer(startTime), startTime).toBe(true);
+    });
+
   });
 });

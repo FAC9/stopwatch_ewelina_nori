@@ -36,6 +36,7 @@ describe("Stopwatch functionality",function(){
   });
 
   it( "stopTimer() stops counting", function() {
+    var watch = new StopWatch();
     var startTime   = new Date().getTime(),
     endTime     = 0,
     timeElapsed = 0;
@@ -45,21 +46,28 @@ describe("Stopwatch functionality",function(){
     timeElapsed = endTime - startTime;
     expect( watch.stopTimer(endTime)).toBe(timeElapsed);
   });
-
   it ("startTimer() should continue counting after stopTimer()",function (){
+    var watch = new StopWatch();
     var startTime   = new Date().getTime(),
     endTime     = 0,
     timeElapsed = 0;
     expect( watch.startTimer(startTime)).toBe(startTime);
-
     endTime = startTime + 5000;
     timeElapsed = endTime - startTime;
     expect( watch.stopTimer(endTime)).toBe(timeElapsed);
-
-
-    startTime = new Date().getTime();
+  //  startTime = new Date().getTime();
     endTime = startTime + 7000;
     expect( watch.stopTimer(endTime)).toBe(12000);
+  });
+  it ("resetTimer() should reset time to 00:00:00:00",function (){
+    var watch = new StopWatch();
+    var startTime   = new Date().getTime(),
+    endTime     = 0,
+    timeElapsed = 0;
+    expect( watch.startTimer(startTime)).toBe(startTime);
+    endTime = startTime + 5000;
+    timeElapsed = endTime - startTime;
+    expect( watch.resetTimer(timeElapsed)).toBe(0);
   });
 
 });

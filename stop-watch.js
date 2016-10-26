@@ -1,17 +1,22 @@
-function StopWatch () {
   'use strict';
+function StopWatch () {
   this.timeElapsed = 0;
   this.startTime = 0;
+//  this.start = document.getElementById("start");
+//  this.stop = document.getElementById("stop");
+//  this.reset = document.getElementById("reset");
+  console.log(this.start);
 
 };
 
 StopWatch.prototype.startTimer = function(startTime){
-    var timerStarted = startTime; // argument externally supplied
-    console.log("startTime: "+startTime);
-    return timerStarted;
-}
+    this.startTime = startTime; // argument externally supplied
+    console.log("startTime: "+this.startTime);
+    return this.startTime;
+};
 
 StopWatch.prototype.stopTimer = function (endTime) {
-  return 5000;
+  this.timeElapsed += (endTime - this.startTime);
+  return this.timeElapsed;
 
-}
+};

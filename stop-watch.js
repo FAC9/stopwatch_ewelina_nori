@@ -6,7 +6,6 @@ function StopWatch () {
 //  this.stop = document.getElementById("stop");
 //  this.reset = document.getElementById("reset");
   console.log(this.start);
-
 };
 
 StopWatch.prototype.startTimer = function(startTime){
@@ -18,5 +17,11 @@ StopWatch.prototype.startTimer = function(startTime){
 StopWatch.prototype.stopTimer = function (endTime) {
   this.timeElapsed += (endTime - this.startTime);
   return this.timeElapsed;
-
 };
+
+StopWatch.prototype.resetTimer = function () {
+  this.timeElapsed = 0;
+  this.startTime = 0;
+  document.getElementsByTagName('time')[0].innerHTML = "00:00:00:00";
+  return this.timeElapsed;
+}

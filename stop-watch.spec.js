@@ -24,5 +24,9 @@ var watch = new StopWatch();
     it("StopWatch should be zero before we start the Timer", function(){
       expect(watch.timeElapsed).toBe(0);
     });
+    it("StopWatch shouldhave a startTime variable", function(){
+      expect(watch.startTime).toBe(0);
+    });
+
   });
 });

@@ -1,5 +1,7 @@
   'use strict';
 var StopWatch = function() {
+  this.lock = false;
+  this.isStopped = true;
   this.timeElapsed = 0;
   this.startTime = 0;
   this.interval = 0;
@@ -7,11 +9,18 @@ var StopWatch = function() {
 };
 
 StopWatch.prototype.stopTimer = function () {
-  this.timeElapsed += (new Date().getTime() - this.startTime);
-  clearInterval(this.interval);
-  this.laps.push(this.renderTimer2(this.timeElapsed));
-  document.getElementsByClassName('laps')[0].innerHTML = this.laps;
-  return this.timeElapsed;
+  if (this.lock) return false;
+  else {
+    this.lock = true;
+    this.isStopped = true;
+    this.timeElapsed = (this.startTime== 0 ? 0:new Date().getTime() - this.startTime);
+    clearInterval(this.interval);
+    this.laps.push(this.renderTimer2(this.timeElapsed));
+    console.log("stop",this.timeElapsed,this.startTime);
+    document.getElementsByClassName('laps')[0].innerHTML = this.laps.join("\n");
+    this.lock = false;
+    return true; //this.timeElapsed;
+  }
 };
 
 StopWatch.prototype.resetTimer = function () {
@@ -104,13 +113,19 @@ StopWatch.prototype.renderTimer2 = function(time){
 }
 StopWatch.prototype.startTimer = function(){
     //console.log("Am I herenow?",this);
-    this.startTime = ( this.startTime ? this.startTime : new Date().getTime()); // argument externally supplied
-    console.log("startTime: "+this.startTime);
-    console.log("Buu",this);
-    var test=this;
-    this.interval = setInterval(function(){
-        test.renderTimer();
-        //console.log("HAHO");
-      },50);
-    return this.startTime;
+    if (this.lock || !this.isStopped) return false;
+    else {
+      this.lock = true;
+      this.isStopped = false;
+      this.startTime = ( this.startTime ? this.startTime : new Date().getTime()); // argument externally supplied
+      console.log("startTime: "+this.startTime);
+      console.log("Buu",this);
+      var test=this;
+      this.interval = setInterval(function(){
+          test.renderTimer();
+          //console.log("HAHO");
+        },50);
+      this.lock = false;
+      return true; // this.startTime;
+    }
 };

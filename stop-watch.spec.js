@@ -67,7 +67,15 @@ describe("Stopwatch functionality",function(){
     expect( watch.startTimer(startTime)).toBe(startTime);
     endTime = startTime + 5000;
     timeElapsed = endTime - startTime;
-    expect( watch.resetTimer(timeElapsed)).toBe(0);
+    expect( watch.resetTimer()).toBe(0);
+  });
+
+  it ("renderTimer() displays time as a string of digits separated by colons", function () {
+    var dayInMilliseconds =  24   *   60    *   60    *   1000;
+   var startTime = new Date().getTime() - (dayInMilliseconds - 1000) ;
+   watch.resetTimer(); // reset before restart
+   watch.startTimer(startTime); // init the start time
+   expect(watch.renderTimer(startTime)).toBe('23:59:59:00');
   });
 
 });

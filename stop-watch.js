@@ -10,3 +10,8 @@ StopWatch.prototype.startTimer = function(startTime){
     console.log("startTime: "+startTime);
     return timerStarted;
 }
+
+StopWatch.prototype.stopTimer = function (endTime) {
+  return 5000;
+
+}

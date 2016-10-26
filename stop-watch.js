@@ -2,9 +2,6 @@
 function StopWatch () {
   this.timeElapsed = 0;
   this.startTime = 0;
-//  this.start = document.getElementById("start");
-//  this.stop = document.getElementById("stop");
-//  this.reset = document.getElementById("reset");
   console.log(this.start);
 };
 
@@ -26,9 +23,9 @@ StopWatch.prototype.resetTimer = function () {
   return this.timeElapsed;
 }
 
-StopWatch.prototype.renderTimer = function(elapsed){
+StopWatch.prototype.renderTimer = function(){
 	var hours=0,minutes=0,seconds=0 ,milliseconds = 0,res;
-//	elapsed=4620000
+  var elapsed = new Date().getTime() - this.startTime;
 		//1ms
 	milliseconds= Math.floor((elapsed%1000)/10);
 	if(milliseconds < 10)
@@ -60,5 +57,6 @@ StopWatch.prototype.renderTimer = function(elapsed){
 	res = hours + ':'+minutes+':'+seconds+':'+milliseconds;
 	console.log(hours,minutes,seconds,milliseconds);
 	console.log(res);
+  document.getElementsByClassName("timer")[0].innerHTML = res;
 	return res;
 }

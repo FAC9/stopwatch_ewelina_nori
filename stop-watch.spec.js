@@ -30,8 +30,16 @@ var watch = new StopWatch();
 
     it( "startTimer() starts counting from *NOW* (when instructed)", function() {
       var startTime = new Date().getTime();
-      expect( watch.startTimer(startTime), startTime).toBe(true);
+      expect( watch.startTimer(startTime)).toBe( startTime);
     });
-
+    it( "stopTimer() stops counting", function() {
+      var startTime   = new Date().getTime(),
+        endTime     = 0,
+        timeElapsed = 0;
+        expect( watch.startTimer(startTime)).toBe(startTime);
+        endTime = startTime + 5000;
+        timeElapsed = endTime - startTime;
+        expect( watch.stopTimer(endTime)).toBe(timeElapsed);
+    });
   });
 });

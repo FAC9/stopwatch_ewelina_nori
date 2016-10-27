@@ -1,32 +1,28 @@
   'use strict';
-function StopWatch () {
+var stopWatch = {
   this.timeElapsed = 0;
   this.startTime = 0;
-//  this.start = document.getElementById("start");
-//  this.stop = document.getElementById("stop");
-//  this.reset = document.getElementById("reset");
-  console.log(this.start);
 };
 
-StopWatch.prototype.startTimer = function(startTime){
+stopWatch.pstartTimer = function(startTime){
     this.startTime = startTime; // argument externally supplied
     console.log("startTime: "+this.startTime);
     return this.startTime;
 };
 
-StopWatch.prototype.stopTimer = function (endTime) {
+stopWatch.pstopTimer = function (endTime) {
   this.timeElapsed += (endTime - this.startTime);
   return this.timeElapsed;
 };
 
-StopWatch.prototype.resetTimer = function () {
+stopWatch.presetTimer = function () {
   this.timeElapsed = 0;
   this.startTime = 0;
   document.getElementsByTagName('time')[0].innerHTML = "00:00:00:00";
   return this.timeElapsed;
 }
 
-StopWatch.prototype.renderTimer = function(elapsed){
+stopWatch.prenderTimer = function(elapsed){
 	var hours=0,minutes=0,seconds=0 ,milliseconds = 0,res;
 //	elapsed=4620000
 		//1ms

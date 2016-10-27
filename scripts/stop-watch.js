@@ -13,29 +13,21 @@ var StopWatch = (function() {
   StopWatch.prototype.stop = function (time) {
     if (this.lock) {
       return false;
-    } else {
-      if (time) {
-        this.timeElapsed = time - this.startTime;
-      } else {
-        this.timeElapsed = this.startTime == 0 ? 0 : new Date().getTime() - this.startTime;
-      }
-      this.lock = true;
-      this.isStopped = true;
-      clearInterval(this.interval);
-      this.laps.push(this.render(this.timeElapsed));
-      document.getElementsByClassName('laps')[0].innerHTML = this.laps.join("\n");
-      this.lock = false;
-      return this.timeElapsed;
     }
+    this.timeElapsed = time ? time - this.startTime : this.startTime == 0 ? 0 : new Date().getTime() - this.startTime;
+    this.isStopped = true;
+    clearInterval(this.interval);
+    this.laps.push(this.render(this.timeElapsed));
+    document.getElementsByClassName('laps')[0].innerHTML = this.laps.join("\n");
+    return this.timeElapsed;
   }
 
   StopWatch.prototype.reset = function () {
-    if(this.isStopped === false) {
-        this.stop();
+    if (this.isStopped === false) {
+      this.stop();
     }
     this.timeElapsed = 0;
     this.startTime = 0;
-  //  this.isStopped = true;
     this.laps = [];
     document.getElementsByClassName('laps')[0].innerHTML = "00:00:00:00";
     document.getElementsByTagName('time')[0].innerHTML = "00:00:00:00";
@@ -90,23 +82,16 @@ var StopWatch = (function() {
   };
 
   StopWatch.prototype.start = function(start){
+    var test = this;
     if (this.lock || !this.isStopped) {
       return false;
-    } else {
-      if(start) {
-        this.startTime = start;
-      } else {
-        this.startTime = ( this.startTime ? this.startTime : new Date().getTime());
-      }
-      this.lock = true;
-      this.isStopped = false;
-      var test = this;
-      this.interval = setInterval(function(){
-        document.getElementsByClassName("timer")[0].innerHTML = test.render();
-      },50);
-      this.lock = false;
-      return this.startTime;
     }
+    this.startTime = start ? start : this.startTime ? this.startTime : new Date().getTime();
+    this.isStopped = false;
+    this.interval = setInterval(function(){
+      document.getElementsByClassName("timer")[0].innerHTML = test.render();
+    },50);
+    return this.startTime;
   }
   return StopWatch;
 })();

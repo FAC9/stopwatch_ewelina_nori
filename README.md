@@ -2,7 +2,7 @@
 
 ## Objectives
 - stopWatch (start,stop,reset,laps)
-- update DOM in reald time
+- update DOM in real time
 - follow the TDD approach during the development cirle
 
 ### Our journey
@@ -10,12 +10,15 @@
 #### Wednesday
 - ping-pong pair programming,test with Jasmine
 - result: stop watch(start,stop,reset)
-- problems encountered: we chosed to add methods with prototype and figured out is not the best practice. 
+- problems encountered: we chosed to add methods with prototype and figured out is not the best practice.
+
+##### Discoveries
+- we had to introduce a Boolean to prevent our user from clicking on the buttons straigth after each other. Eg. we click on start,then click on reset before the function triggered by our start button returns.
 
 #### Thursday
 - adding lapses to the clock
 - switch to QUnit.
-- CSS styling (hopefully...)
+- CSS styling
 
 #### Advice to our future selves
 

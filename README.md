@@ -19,6 +19,7 @@
 - adding lapses to the clock
 - switch to QUnit.
 - CSS styling
+- refactor our code
 
 #### Advice to our future selves
 

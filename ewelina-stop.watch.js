@@ -28,10 +28,20 @@ var StopWatch = (function (document) {
       init: init,
       start: start,
       stop: stop,
-      reset: reset
+      reset: reset,
+      getHours: getHours,
+      getMinutes: getMinutes,
+      getSeconds: getSeconds,
+      getMilliseconds: getMilliseconds
     };
 
     return service;
+
+    function init () {
+      setElements();
+      setClickHandlers();
+      refreshTimeDisplay();
+    }
 
     function refreshTimeDisplay () {
       if (shouldRefreshDisplay) {
@@ -44,11 +54,23 @@ var StopWatch = (function (document) {
       return unit.toString().length === 1 ? '0' + unit : unit;
     }
 
-    function init () {
-      setElements();
-      setClickHandlers();
-      refreshTimeDisplay();
+    function getHours () {
+      return hours;
     }
+
+    function getMinutes () {
+      return minutes;
+    }
+
+    function getSeconds () {
+      return seconds;
+    }
+
+    function getMilliseconds () {
+      return milliseconds;
+    }
+
+
 
     function setElements () {
       containerElement = document.getElementById(containerIdSelector);

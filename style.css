@@ -18,8 +18,8 @@
   outline:none;
 }
 .btn:active {
-    box-shadow: 0 3px #222121;
-    transform: translateY(3px);
+  box-shadow: 0 3px #222121;
+  transform: translateY(3px);
 }
 
 .laps-title {

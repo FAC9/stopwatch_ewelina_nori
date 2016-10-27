@@ -16,7 +16,7 @@ var StopWatch = (function (document) {
     milliseconds = 0;
 
     var clockInterval,
-        shouldRefreshDisplay = true;
+    shouldRefreshDisplay = true;
 
     var containerElement,
     timeElement,
@@ -50,6 +50,10 @@ var StopWatch = (function (document) {
       }
     }
 
+    /**
+    * @param {Number} unit
+    * @returns {String}
+    */
     function formatTimeUnit (unit) {
       return unit.toString().length === 1 ? '0' + unit : unit;
     }
@@ -70,8 +74,6 @@ var StopWatch = (function (document) {
       return milliseconds;
     }
 
-
-
     function setElements () {
       containerElement = document.getElementById(containerIdSelector);
       if (typeof containerElement === 'undefined') {
@@ -88,7 +90,6 @@ var StopWatch = (function (document) {
       stopBtn.addEventListener("click", stop);
       resetBtn.addEventListener('click', reset);
     }
-
 
     /**
     * @param {String} selector

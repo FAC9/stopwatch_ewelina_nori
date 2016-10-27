@@ -9,18 +9,25 @@ var StopWatch = function() {
   this.laps = [];
 };
 
-StopWatch.prototype.stopTimer = function () {
+StopWatch.prototype.stopTimer = function (time) {
   if (this.lock) return false;
   else {
+    if(time){
+    this.timeElapsed = time - this.startTime;
+    console.log(this.timeElapsed,"manual stoptime",this.startTime);
+    }else {
+      this.timeElapsed = (this.startTime== 0 ? 0:new Date().getTime() - this.startTime);
+    }
     this.lock = true;
     this.isStopped = true;
-    this.timeElapsed = (this.startTime== 0 ? 0:new Date().getTime() - this.startTime);
+  //  this.timeElapsed = (this.startTime== 0 ? 0:new Date().getTime() - this.startTime);
     clearInterval(this.interval);
     this.laps.push(this.renderTimer2(this.timeElapsed));
     console.log("stop",this.timeElapsed,this.startTime);
     document.getElementsByClassName('laps')[0].innerHTML = this.laps.join("\n");
     this.lock = false;
-    return true; //this.timeElapsed;
+    console.log(this.timeElapsed,"inside stop func");
+    return this.timeElapsed;
   }
 };
 //test asynchronousity
@@ -34,15 +41,17 @@ StopWatch.prototype.resetTimer = function () {
   document.getElementsByClassName('laps')[0].innerHTML = "00:00:00:00";
   console.log("reset",this.timeElapsed,this.startTime);
   document.getElementsByTagName('time')[0].innerHTML = "00:00:00:00";
-//  return this.timeElapsed;
+  return this.timeElapsed;
 
 }
 
-StopWatch.prototype.renderTimer = function(){
+StopWatch.prototype.renderTimer = function(startTime){
     var hours=0,minutes=0,seconds=0 ,milliseconds = 0,res;
   //console.log("IS anybody home?",this);
 
-  var elapsed = new Date().getTime() - this.startTime;
+  var elapsed = (startTime?startTime:new Date().getTime() - this.startTime);
+  this.timeElapsed = (startTime?startTime:new Date().getTime() - this.startTime);//!!!!!!
+  console.log("ELAPSE in render",elapsed);
         //1ms
     milliseconds= Math.floor((elapsed%1000)/10);
     if(milliseconds < 10)
@@ -117,13 +126,18 @@ StopWatch.prototype.renderTimer2 = function(time){
 //  document.getElementsByClassName("timer")[0].innerHTML = res;
     return res;
 }
-StopWatch.prototype.startTimer = function(){
+StopWatch.prototype.startTimer = function(startT){
     //console.log("Am I herenow?",this);
     if (this.lock || !this.isStopped) return false;
     else {
+      if(startT){
+        this.startTime = startT;
+        console.log("ITT VAGYOK");
+      }else
+        this.startTime = ( this.startTime ? this.startTime : new Date().getTime());
       this.lock = true;
       this.isStopped = false;
-      this.startTime = ( this.startTime ? this.startTime : new Date().getTime()); // argument externally supplied
+      //this.startTime = ( this.startTime ? this.startTime : new Date().getTime()); // argument externally supplied
       console.log("startTime: "+this.startTime);
       console.log("Buu",this);
       var test=this;
@@ -132,6 +146,6 @@ StopWatch.prototype.startTimer = function(){
           //console.log("HAHO");
         },50);
       this.lock = false;
-      return true; // this.startTime;
+      return  this.startTime; //true;
     }
 };

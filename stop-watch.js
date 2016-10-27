@@ -23,15 +23,19 @@ StopWatch.prototype.stopTimer = function () {
     return true; //this.timeElapsed;
   }
 };
-
+//test asynchronousity
 StopWatch.prototype.resetTimer = function () {
+  if(this.isStopped === false )
+    this.stopTimer();
   this.timeElapsed = 0;
   this.startTime = 0;
+  this.isStopped = true
   this.laps = [];
   document.getElementsByClassName('laps')[0].innerHTML = "00:00:00:00";
   console.log("reset",this.timeElapsed,this.startTime);
   document.getElementsByTagName('time')[0].innerHTML = "00:00:00:00";
-  return this.timeElapsed;
+//  return this.timeElapsed;
+
 }
 
 StopWatch.prototype.renderTimer = function(){

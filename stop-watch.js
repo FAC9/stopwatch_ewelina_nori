@@ -1,4 +1,5 @@
   'use strict';
+
 var StopWatch = function() {
   this.lock = false;
   this.isStopped = true;
@@ -23,7 +24,7 @@ StopWatch.prototype.stopTimer = function () {
   }
 };
 
-StopWatch.prototype.resetTimer = function () {
+stopWatch.presetTimer = function () {
   this.timeElapsed = 0;
   this.startTime = 0;
   this.laps = [];

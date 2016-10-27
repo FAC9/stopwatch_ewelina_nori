@@ -1,7 +1,5 @@
 describe("Stopwatch",function(){
 
-  var watch = new StopWatch();
-
   /*describe("StopWatch HTML elements",function(){
   it("time display",function(){
   expect(document.getElementsByTagName("time")[0]).toBeDefined();

@@ -10,7 +10,7 @@ var StopWatch = (function() {
     this.laps = [];
   };
 
-  StopWatch.prototype.stopTimer = function (time) {
+  StopWatch.prototype.stop = function (time) {
     if (this.lock) {
       return false;
     } else {
@@ -22,16 +22,16 @@ var StopWatch = (function() {
       this.lock = true;
       this.isStopped = true;
       clearInterval(this.interval);
-      this.laps.push(this.renderTimer(this.timeElapsed));
+      this.laps.push(this.render(this.timeElapsed));
       document.getElementsByClassName('laps')[0].innerHTML = this.laps.join("\n");
       this.lock = false;
       return this.timeElapsed;
     }
   }
 
-  StopWatch.prototype.resetTimer = function () {
+  StopWatch.prototype.reset = function () {
     if(this.isStopped === false )
-    this.stopTimer();
+    this.stop();
     this.timeElapsed = 0;
     this.startTime = 0;
     this.isStopped = true
@@ -41,7 +41,7 @@ var StopWatch = (function() {
     return this.timeElapsed;
   }
 
-  StopWatch.prototype.renderTimer = function(time){
+  StopWatch.prototype.render = function(time){
     var hours = 0,
     minutes = 0,
     seconds = 0,
@@ -88,7 +88,7 @@ var StopWatch = (function() {
     return res;
   };
 
-  StopWatch.prototype.startTimer = function(start){
+  StopWatch.prototype.start = function(start){
     if (this.lock || !this.isStopped) {
       return false;
     } else {
@@ -101,7 +101,7 @@ var StopWatch = (function() {
       this.isStopped = false;
       var test = this;
       this.interval = setInterval(function(){
-        document.getElementsByClassName("timer")[0].innerHTML = test.renderTimer();
+        document.getElementsByClassName("timer")[0].innerHTML = test.render();
       },50);
       this.lock = false;
       return this.startTime;

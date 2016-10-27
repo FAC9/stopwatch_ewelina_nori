@@ -23,7 +23,6 @@ StopWatch.prototype.stopTimer = function (time) {
     this.laps.push(this.renderTimer2(this.timeElapsed));
     document.getElementsByClassName('laps')[0].innerHTML = this.laps.join("\n");
     this.lock = false;
-    console.log(this.timeElapsed,"inside stop func");
     return this.timeElapsed;
   }
 };

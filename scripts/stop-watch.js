@@ -1,6 +1,6 @@
-
-'use strict';
 var StopWatch = (function() {
+  'use strict';
+
   var StopWatch = function() {
     this.lock = false;
     this.isStopped = true;
@@ -14,10 +14,10 @@ var StopWatch = (function() {
     if (this.lock) {
       return false;
     } else {
-      if(time) {
+      if (time) {
         this.timeElapsed = time - this.startTime;
       } else {
-        this.timeElapsed = (this.startTime== 0 ? 0:new Date().getTime() - this.startTime);
+        this.timeElapsed = this.startTime == 0 ? 0 : new Date().getTime() - this.startTime;
       }
       this.lock = true;
       this.isStopped = true;
@@ -30,11 +30,12 @@ var StopWatch = (function() {
   }
 
   StopWatch.prototype.reset = function () {
-    if(this.isStopped === false )
-    this.stop();
+    if(this.isStopped === false) {
+        this.stop();
+    }
     this.timeElapsed = 0;
     this.startTime = 0;
-    this.isStopped = true
+  //  this.isStopped = true;
     this.laps = [];
     document.getElementsByClassName('laps')[0].innerHTML = "00:00:00:00";
     document.getElementsByTagName('time')[0].innerHTML = "00:00:00:00";
@@ -47,7 +48,7 @@ var StopWatch = (function() {
     seconds = 0,
     milliseconds = 0,
     res;
-    this.timeElapsed = (time ? time : new Date().getTime() - this.startTime);
+    this.timeElapsed = time ? time : new Date().getTime() - this.startTime;
 
     //1ms
     milliseconds = Math.floor((this.timeElapsed % 1000) / 10);

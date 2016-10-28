@@ -8,7 +8,7 @@
 ### Our journey
 
 #### Wednesday
-- ping-pong pair programming,test with Jasmine
+- ping-pong pair programming
 - result: stopwatch(start,stop,reset)
 - Jasmine for testing
 

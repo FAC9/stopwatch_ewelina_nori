@@ -2,8 +2,8 @@
 window.onload = windowOnLoad;
 
 function windowOnLoad() {
-  StopWatch("gowno").init();
-  StopWatch("gowno2").init();
+  StopWatch("stopWatch1").init();
+  StopWatch("stopWatch2").init();
 }
 
 var StopWatch = (function (document) {

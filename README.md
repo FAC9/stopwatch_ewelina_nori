@@ -10,7 +10,7 @@
 #### Wednesday
 - ping-pong pair programming,test with Jasmine
 - result: stopwatch(start,stop,reset)
-- problems encountered: we chose to add methods with prototype and figured out is not the best practice.
+- Jasmine for testing
 
 ##### Discoveries
 - we had to introduce a Boolean to prevent our user from clicking on the buttons straigth after each other e.g. we click on start,then click on reset before the function triggered by our start button returns.

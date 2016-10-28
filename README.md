@@ -13,7 +13,7 @@
 - problems encountered: we chose to add methods with prototype and figured out is not the best practice.
 
 ##### Discoveries
-- we had to introduce a Boolean to prevent our user from clicking on the buttons straigth after each other. Eg. we click on start,then click on reset before the function triggered by our start button returns.
+- we had to introduce a Boolean to prevent our user from clicking on the buttons straigth after each other e.g. we click on start,then click on reset before the function triggered by our start button returns.
 
 #### Thursday
 - adding lapses to the clock

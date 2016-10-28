@@ -17,8 +17,10 @@ var StopWatch = (function() {
     this.timeElapsed = time ? time - this.startTime : this.startTime == 0 ? 0 : new Date().getTime() - this.startTime;
     this.isStopped = true;
     clearInterval(this.interval);
-    this.laps.push(this.render(this.timeElapsed));
-    document.getElementsByClassName('laps')[0].innerHTML = this.laps.join("\n");
+    if(this.startTime !== 0){
+      this.laps.push(this.render(this.timeElapsed));
+      document.getElementsByClassName('laps')[0].innerHTML = this.laps.join("\n");
+    }
     return this.timeElapsed;
   }
 

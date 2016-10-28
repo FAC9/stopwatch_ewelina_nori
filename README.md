@@ -17,7 +17,7 @@
 
 #### Thursday
 - adding lapses to the clock
-- switch to QUnit.
+- switch to QUnit
 - CSS styling
 - refactor our code
 

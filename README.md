@@ -21,7 +21,7 @@
 - CSS styling
 - refactor our code
 
-#### Advice to future ourselves
+#### Advice for future projects
 
 - Don't use prototypes.
 - Try to follow the modular approach next time.

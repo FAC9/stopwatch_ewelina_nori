@@ -30,8 +30,6 @@ QUnit.test( "start() should continue counting after stopTimer()", function(asser
   assert.equal(stopWatch.start(startTime), startTime);
   endTime = startTime + 5000;
   assert.equal(stopWatch.stop(endTime), 5000);
-  console.log("Pause timer ...");
-
   endTime = startTime + 7000;
   assert.equal(stopWatch.stop(endTime), 7000);//12000);
 });
@@ -57,7 +55,7 @@ QUnit.test( "render() display leading zeros", function(assert) {
   var h = 60 * 60 * 1000 * 7; // 7 hours in milliseconds
   var m = 60 * 1000 * 26; // 26 minutes
   var s = 1000 * 2; // 2 seconds
-  var startTime = h + m + s + 6;;
+  var startTime = h + m + s + 6;
   assert.equal(stopWatch.render(startTime), '07:26:02:00');
 });
 
@@ -71,8 +69,9 @@ QUnit.test("Async", function(assert) {
     done();
   }, 3000);
   setTimeout(function(){
-    stopWatch.reset();
-    done();
-  }, 3500);
-
+      stopWatch.reset();
+    }, 3500);
 });
+
+
+//});

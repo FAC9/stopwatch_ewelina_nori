@@ -16,7 +16,7 @@
 - we had to introduce a Boolean to prevent our user from clicking on the buttons straigth after each other e.g. we click on start,then click on reset before the function triggered by our start button returns.
 
 #### Thursday
-- adding lapses to the clock
+- adding lapses to the stopwatch
 - switch to QUnit
 - CSS styling
 - refactor our code

@@ -1,7 +1,7 @@
 # stopwatch_ewelina_nori
 
 ## Objectives
-- stopWatch (start,stop,reset,laps)
+- stopwatch (start,stop,reset,laps)
 - update DOM in real time
 - follow the TDD approach during the development circle
 
@@ -9,7 +9,7 @@
 
 #### Wednesday
 - ping-pong pair programming,test with Jasmine
-- result: stop watch(start,stop,reset)
+- result: stopwatch(start,stop,reset)
 - problems encountered: we chose to add methods with prototype and figured out is not the best practice.
 
 ##### Discoveries
